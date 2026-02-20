@@ -1,5 +1,3 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Clasificacion extends LinkedList<Equipo>{
@@ -51,31 +49,26 @@ public class Clasificacion extends LinkedList<Equipo>{
 		return cadena;
 	}
 	
-	public String partidosPorFecha(String fecha) {
+	public String partidosPorFecha(String fecha) throws MiExepcion {
 		
+		int cont = 0;
+
 		String cadena = "Partidos jugados el " + fecha;
-		
-		Calendar c = Calendar.getInstance();
-		SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY");
-		
-		try {
-			
-			c.setTime(format.parse(fecha));
-			
-		} catch (ParseException e) {
-			
-			System.out.println("Formato de fecha no valido. (DD-MM-YYYY)");
-		}
-		
+
+
 		for(Partido partido : this.listaPartidos) {
-			
-			if (partido.getFecha().equals(c)) {
-				
+
+			if (partido.getFecha().equals(fecha)) {
+
 				cadena += "\n\t" + partido;
+				
+				cont++;
 			}
 		}
 		
+		if(cont == 0) throw new MiExepcion("ola");
+		
 		return cadena;
 	}
-	
+
 }

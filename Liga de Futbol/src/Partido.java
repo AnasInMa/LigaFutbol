@@ -3,12 +3,12 @@ import java.util.Calendar;
 public class Partido {
 
 	private Equipo anfitrion, visitante;
-	private Calendar fecha;
+	private String fecha;
 	private byte golesAnfitrion, golesVisitante;
 	public char resultadoPartido;
 	private String resultado;
 	
-	public Partido(Equipo anfitrion, Equipo visitante, Calendar fecha, byte gA, byte gV) {
+	public Partido(Equipo anfitrion, Equipo visitante, String fecha, byte gA, byte gV) {
 		
 		this.anfitrion = anfitrion;
 		this.visitante = visitante;
@@ -64,7 +64,7 @@ public class Partido {
 		return visitante;
 	}
 
-	public Calendar getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 

@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.util.*;
 
 public class Menu {
@@ -12,7 +13,7 @@ public class Menu {
 
 		Equipo[] equipos = {equipo1, equipo2};
 
-		Partido partido = new Partido(equipo1, equipo2, new GregorianCalendar(02, 12, 2026),
+		Partido partido = new Partido(equipo1, equipo2, "02-12-2026",
 				(byte) 4, (byte) 1);
 
 		char opcion = ' ';
@@ -26,8 +27,7 @@ public class Menu {
 		do {
 
 			menu();
-
-
+			
 			System.out.print("Introduzca una opcion: ");
 			opcion = sc.next().charAt(0);
 
@@ -69,8 +69,13 @@ public class Menu {
 
 		System.out.println("Introduzca la fecha para ver los partidos (DD-MM-YYYY)");
 
-		System.out.println(c.partidosPorFecha(sc.nextLine()));
-
-		sc.nextLine();
+		try {
+			
+			System.out.println(c.partidosPorFecha(sc.nextLine()));
+			
+		} catch (MiExepcion e) {
+			
+			System.err.println("Fecha no valida(DD-MM-YYYY)");
+		}
 	}
 }
